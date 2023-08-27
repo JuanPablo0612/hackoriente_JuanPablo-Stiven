@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Recursos para la pantalla de inicio de sesión -->
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_subtitle">Inicia sesión para acceder a todas las funciones y beneficios de ConectaEDU</string>
+    <string name="login_email_field">Correo electrónico:</string>
+    <string name="login_email_error">El correo electrónico no es válido</string>
+    <string name="login_password_field">Contraseña:</string>
+    <string name="login_password_error">La contraseña debe tener entre 8 y 16 caracteres</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="login_forgot_password_option">¿Olvidaste tu contraseña? Recupérala aquí</string>
+    <string name="login_register_option">¿No tienes una cuenta? Regístrate gratis</string>
+    <string name="login_social_option">O inicia sesión con:</string>
+</resources>

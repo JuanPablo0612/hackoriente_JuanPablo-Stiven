@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name" translatable="false">ConectaEDU</string>
+
+    <!-- Resources for the login screen -->
+    <string name="login_title">Log in</string>
+    <string name="login_subtitle">Log in to access all the features and benefits of ConectaEDU</string>
+    <string name="login_email_field">Email:</string>
+    <string name="login_email_error">The email is not valid</string>
+    <string name="login_password_field">Password:</string>
+    <string name="login_password_error">The password must be between 8 and 16 characters</string>
+    <string name="login_button">Log in</string>
+    <string name="login_forgot_password_option">Forgot your password? Recover it here</string>
+    <string name="login_register_option">Don\'t have an account? Sign up for free</string>
+    <string name="login_social_option">Or log in with:</string>
+</resources>
