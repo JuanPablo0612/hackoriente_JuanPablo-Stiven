@@ -12,4 +12,24 @@
     <string name="login_forgot_password_option">Forgot your password? Recover it here</string>
     <string name="login_register_option">Don\'t have an account? Sign up for free</string>
     <string name="login_social_option">Or log in with:</string>
+
+    <!-- Resources for the register screen -->
+    <string name="register_title">Register</string>
+    <string name="register_subtitle">Create a free account and start enjoying ConectaEDU</string>
+    <string name="register_email_field">Email:</string>
+    <string name="register_email_error">The email is not valid</string>
+    <string name="register_password_field">Password:</string>
+    <string name="register_password_error">The password must be between 8 and 16 characters</string>
+    <string name="register_confirm_password_field">Confirm your password:</string>
+    <string name="register_confirm_password_error">The passwords do not match</string>
+    <string name="register_first_name_field">First name:</string>
+    <string name="register_first_name_error">First name must not be empty</string>
+    <string name="register_last_name_field">Last Name:</string>
+    <string name="register_last_name_error">The last name must not be empty</string>
+    <string name="register_residence_country_field">Residence country:</string>
+    <string name="register_residence_country_error">The residence country must not be empty</string>
+    <string name="register_button">Register</string>
+    <string name="register_terms_option">By registering, you agree to our terms and conditions</string>
+    <string name="register_login_option">Already have an account? Log in here</string>
+    <string name="register_social_option">Or register with:</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.conectaedu.android.ui.login
+package com.conectaedu.android.ui.register
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Password
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
@@ -37,6 +38,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -48,7 +50,7 @@ import com.conectaedu.android.ui.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavController) {
+fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel(), navController: NavController) {
     val uiState = viewModel.uiState
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val focusManager = LocalFocusManager.current
@@ -63,13 +65,13 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavC
     Scaffold(
         topBar = {
             LargeTopAppBar(
-                title = { Text(text = stringResource(id = R.string.login_title)) },
-                /*navigationIcon = {
+                title = { Text(text = stringResource(id = R.string.register_title)) },
+                navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
                         Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
                     }
-                },*/
-                scrollBehavior = scrollBehavior
+                },
+                scrollBehavior = scrollBehavior,
             )
         },
         modifier = Modifier
@@ -84,7 +86,7 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavC
                 .verticalScroll(state = rememberScrollState())
         ) {
             Text(
-                text = stringResource(id = R.string.login_subtitle),
+                text = stringResource(id = R.string.register_subtitle),
                 style = MaterialTheme.typography.bodyLarge
             )
 
@@ -94,18 +96,18 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavC
                 value = uiState.email,
                 onValueChange = { viewModel.onEmailTextChanged(it) },
                 label = {
-                    Text(text = stringResource(id = R.string.login_email_field))
+                    Text(text = stringResource(id = R.string.register_email_field))
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Email, contentDescription = null)
                 },
+                enabled = !uiState.isLoading,
                 isError = !uiState.isValidEmail,
                 supportingText = {
                     if (!uiState.isValidEmail) {
-                        Text(text = stringResource(id = R.string.login_email_error))
+                        Text(text = stringResource(id = R.string.register_email_error))
                     }
                 },
-                enabled = !uiState.isLoading,
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email,
@@ -123,7 +125,7 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavC
                 value = uiState.password,
                 onValueChange = { viewModel.onPasswordTextChanged(it) },
                 label = {
-                    Text(text = stringResource(id = R.string.login_password_field))
+                    Text(text = stringResource(id = R.string.register_password_field))
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Password, contentDescription = null)
@@ -140,7 +142,7 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavC
                 isError = !uiState.isValidPassword,
                 supportingText = {
                     if (!uiState.isValidPassword) {
-                        Text(text = stringResource(id = R.string.login_password_error))
+                        Text(text = stringResource(id = R.string.register_password_error))
                     }
                 },
                 visualTransformation = if (!uiState.showPassword) PasswordVisualTransformation() else VisualTransformation.None,
@@ -150,18 +152,107 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavC
                     imeAction = ImeAction.Next
                 ),
                 keyboardActions = KeyboardActions(onNext = {
-                    focusManager.clearFocus()
+                    focusManager.moveFocus(FocusDirection.Next)
+                }),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(5.dp))
+
+            OutlinedTextField(
+                value = uiState.repeatPassword,
+                onValueChange = { viewModel.onRepeatPasswordTextChanged(it) },
+                label = {
+                    Text(text = stringResource(id = R.string.register_confirm_password_field))
+                },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Password, contentDescription = null)
+                },
+                enabled = !uiState.isLoading,
+                isError = !uiState.isValidRepeatPassword,
+                supportingText = {
+                    if (!uiState.isValidRepeatPassword) {
+                        Text(text = stringResource(id = R.string.register_confirm_password_error))
+                    }
+                },
+                visualTransformation = if (!uiState.showPassword) PasswordVisualTransformation() else VisualTransformation.None,
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(onNext = {
+                    focusManager.moveFocus(FocusDirection.Next)
+                }),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(5.dp))
+
+            OutlinedTextField(
+                value = uiState.firstName,
+                onValueChange = { viewModel.onFirstNameTextChanged(it) },
+                label = {
+                    Text(text = stringResource(id = R.string.register_first_name_field))
+                },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                },
+                enabled = !uiState.isLoading,
+                isError = !uiState.isValidFirstName,
+                supportingText = {
+                    if (!uiState.isValidFirstName) {
+                        Text(text = stringResource(id = R.string.register_first_name_error))
+                    }
+                },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Words,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(onNext = {
+                    focusManager.moveFocus(FocusDirection.Next)
+                }),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(5.dp))
+
+            OutlinedTextField(
+                value = uiState.lastName,
+                onValueChange = { viewModel.onLastNameTextChanged(it) },
+                label = {
+                    Text(text = stringResource(id = R.string.register_last_name_field))
+                },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                },
+                enabled = !uiState.isLoading,
+                isError = !uiState.isValidLastName,
+                supportingText = {
+                    if (!uiState.isValidLastName) {
+                        Text(text = stringResource(id = R.string.register_last_name_error))
+                    }
+                },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Words,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(onNext = {
+                    focusManager.moveFocus(FocusDirection.Next)
                 }),
                 modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            val allFieldValid = uiState.isValidEmail && uiState.isValidPassword
+            val allFieldsValid =
+                uiState.isValidEmail && uiState.isValidPassword && uiState.isValidRepeatPassword && uiState.isValidFirstName && uiState.isValidLastName
 
             Button(
-                onClick = { viewModel.onLogin() },
-                enabled = !uiState.isLoading && allFieldValid,
+                onClick = { viewModel.onRegister() },
+                enabled = !uiState.isLoading && allFieldsValid,
                 modifier = if (uiState.isLoading) Modifier else Modifier.fillMaxWidth()
             ) {
                 if (uiState.isLoading) {
@@ -175,14 +266,14 @@ fun LoginScreen(viewModel: LoginViewModel = hiltViewModel(), navController: NavC
 
             TextButton(
                 onClick = {
-                    if (navController.previousBackStackEntry?.destination?.route == Screen.Register.route) {
+                    if (navController.previousBackStackEntry?.destination?.route == Screen.Login.route) {
                         navController.navigateUp()
                     } else {
-                        navController.navigate(route = Screen.Register.route)
+                        navController.navigate(Screen.Login.route)
                     }
                 }
             ) {
-                Text(text = stringResource(id = R.string.login_register_option))
+                Text(text = stringResource(id = R.string.register_login_option))
             }
         }
     }

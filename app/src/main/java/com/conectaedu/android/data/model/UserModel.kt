@@ -3,12 +3,12 @@ package com.conectaedu.android.data.model
 import com.conectaedu.android.domain.model.User
 
 data class UserModel(
-    val id: String = "",
-    val email: String = "",
-    val firstName: String = "",
-    val lastName: String = "",
-    val registeredAreaIds: List<String> = emptyList(),
-    val registeredStudyGroupIds: List<String> = emptyList(),
+    val id: String,
+    val email: String,
+    val firstName: String,
+    val lastName: String,
+    val registeredAreaIds: List<String>,
+    val registeredStudyGroupIds: List<String>,
     val isAdmin: Boolean = false
 ) {
     constructor() : this(

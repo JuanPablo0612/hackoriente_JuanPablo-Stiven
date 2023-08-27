@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class UsersRepository @Inject constructor(private val usersRemoteDataSource: UsersRemoteDataSource) {
-    suspend fun setUser(user: User): Result<Nothing> {
+    suspend fun save(user: User): Result<Nothing> {
         val userModel = user.toModel()
-        return usersRemoteDataSource.setUser(userModel)
+        return usersRemoteDataSource.save(userModel)
     }
 
-    fun getUser(id: String) = usersRemoteDataSource.getUser(id)
+    fun get(id: String) = usersRemoteDataSource.get(id)
         .map { userModel -> Result.Success(userModel.toDomain()) }
         .catch { throwable -> Result.Error(throwable as Exception)}
 }

@@ -10,7 +10,7 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class UsersRemoteDataSource @Inject constructor(private val firestore: FirebaseFirestore) {
-    suspend fun setUser(userModel: UserModel): Result<Nothing> {
+    suspend fun save(userModel: UserModel): Result<Nothing> {
         return try {
             firestore.document("users/${userModel.id}").set(userModel).await()
             Result.Success(null)
@@ -19,6 +19,6 @@ class UsersRemoteDataSource @Inject constructor(private val firestore: FirebaseF
         }
     }
 
-    fun getUser(id: String) =
+    fun get(id: String) =
         firestore.document("users/$id").snapshots().map { it.toObject<UserModel>()!! }
 }

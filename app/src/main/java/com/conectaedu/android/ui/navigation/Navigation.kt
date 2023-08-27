@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.conectaedu.android.ui.login.LoginScreen
+import com.conectaedu.android.ui.register.RegisterScreen
 
 @Composable
 fun Navigation(viewModel: NavigationViewModel = hiltViewModel()) {
@@ -15,7 +16,7 @@ fun Navigation(viewModel: NavigationViewModel = hiltViewModel()) {
     val navController = rememberNavController()
 
     val startDestination =
-        if (uiState.isLoggedIn) Screen.Login.route else Screen.Welcome.route
+        if (uiState.isLoggedIn) Screen.Home.route else Screen.Login.route
 
     if (!uiState.isLoading) {
         NavHost(navController = navController, startDestination = startDestination) {
@@ -35,6 +36,42 @@ fun Navigation(viewModel: NavigationViewModel = hiltViewModel()) {
                 }
             ) {
                 LoginScreen(navController = navController)
+            }
+
+            composable(
+                route = Screen.Register.route,
+                enterTransition = {
+                    slideInHorizontally { height -> height }
+                },
+                exitTransition = {
+                    slideOutHorizontally { height -> -height }
+                },
+                popEnterTransition = {
+                    slideInHorizontally { height -> -height }
+                },
+                popExitTransition = {
+                    slideOutHorizontally { height -> height }
+                }
+            ) {
+                RegisterScreen(navController = navController)
+            }
+
+            composable(
+                route = Screen.Home.route,
+                enterTransition = {
+                    slideInHorizontally { height -> height }
+                },
+                exitTransition = {
+                    slideOutHorizontally { height -> -height }
+                },
+                popEnterTransition = {
+                    slideInHorizontally { height -> -height }
+                },
+                popExitTransition = {
+                    slideOutHorizontally { height -> height }
+                }
+            ) {
+
             }
         }
     }
