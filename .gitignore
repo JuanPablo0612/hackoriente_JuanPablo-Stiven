@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/androidTest/java/com/conectaedu/android/
+/app/src/test/java/com/conectaedu/android/
+/app/release/
