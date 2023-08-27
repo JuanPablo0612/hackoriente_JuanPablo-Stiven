@@ -31,4 +31,10 @@
     <string name="register_terms_option">Al registrarte, aceptas nuestros términos y condiciones</string>
     <string name="register_login_option">¿Ya tienes una cuenta? Inicia sesión aquí</string>
     <string name="register_social_option">O regístrate con:</string>
+
+    <!-- Recursos para la pantalla de inicio -->
+    <string name="home_title">Inicio</string>
+    <string name="home_subtitle">Aquí están las áreas a las que te registraste</string>
+    <string name="home_empty_areas">No te has registrado en ningún área</string>
+    <string name="home_register_button">Registrarse</string>
 </resources>

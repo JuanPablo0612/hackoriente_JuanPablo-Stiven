@@ -32,4 +32,10 @@
     <string name="register_terms_option">By registering, you agree to our terms and conditions</string>
     <string name="register_login_option">Already have an account? Log in here</string>
     <string name="register_social_option">Or register with:</string>
+
+    <!-- Resources for the home screen -->
+    <string name="home_title">Home</string>
+    <string name="home_subtitle">Here are the areas you registered to</string>
+    <string name="home_empty_areas">You have not registered in any area</string>
+    <string name="home_register_button">Register</string>
 </resources>

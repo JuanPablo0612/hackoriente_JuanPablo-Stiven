@@ -7,6 +7,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.conectaedu.android.ui.home.HomeScreen
 import com.conectaedu.android.ui.login.LoginScreen
 import com.conectaedu.android.ui.register.RegisterScreen
 
@@ -71,7 +72,7 @@ fun Navigation(viewModel: NavigationViewModel = hiltViewModel()) {
                     slideOutHorizontally { height -> height }
                 }
             ) {
-
+                HomeScreen()
             }
         }
     }
