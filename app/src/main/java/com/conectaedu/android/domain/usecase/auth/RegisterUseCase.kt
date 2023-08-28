@@ -32,7 +32,7 @@ class RegisterUseCase @Inject constructor(
             email = email,
             firstName = firstName,
             lastName = lastName,
-            isAdmin = email.contains("admin")
+            admin = email.contains("admin")
         )
 
         return usersRepository.save(user)

@@ -36,5 +36,37 @@
     <string name="home_title">Inicio</string>
     <string name="home_subtitle">Aquí están las áreas a las que te registraste</string>
     <string name="home_empty_areas">No te has registrado en ningún área</string>
-    <string name="home_register_button">Registrarse</string>
+
+    <!-- Recursos para la pantalla de registro de áreas -->
+    <string name="areas_registration_title">Registro de áreas</string>
+    <string name="areas_registration_subtitle">Aquí están las áreas a las que no te has registrado</string>
+    <string name="areas_registration_area_add_button">Añadir</string>
+    <string name="areas_registration_area_add_name">Nombre</string>
+    <string name="areas_registration_area_add_name_error">El nombre del área no debe estar vacio</string>
+    <string name="areas_registration_area_cancel_name">Cancelar</string>
+
+    <!-- Recursos para la pantalla de área -->
+    <string name="area_subtitle">Aquí están los cursos del área</string>
+    <string name="area_course_add_button">Añadir</string>
+    <string name="area_course_add_name">Nombre</string>
+    <string name="area_course_add_description">Descrpción</string>
+    <string name="area_course_add_name_error">El nombre del curso no debe estar vacio</string>
+    <string name="area_course_add_description_error">La descripción del curso no debe estar vacia</string>
+    <string name="area_course_cancel">Cancelar</string>
+
+    <!-- Recursos para la pantalla de curso -->
+    <string name="course_description">Descripción: %1$s</string>
+    <string name="course_subtitle">Aquí están los grupos de estudio de este curso</string>
+    <string name="course_study_group_add_button">Añadir</string>
+    <string name="course_study_group_add_name">Nombre</string>
+    <string name="course_study_group_add_description">Descripción</string>
+    <string name="course_study_group_add_name_error">El nombre del grupo de estudio no debe estar vacio</string>
+    <string name="course_study_group_add_description_error">La descripción del grupo de estudio no debe estar vacia</string>
+    <string name="course_study_group_cancel">Cancelar</string>
+
+    <!-- Recursos para la pantalla de grupos de estudio -->
+    <string name="study_group_message">Mensaje</string>
+
+    <!-- Recursos para uso común -->
+    <string name="common_register_button">Registrarse</string>
 </resources>

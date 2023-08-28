@@ -16,6 +16,10 @@ class AreasRepository @Inject constructor(private val areasRemoteDataSource: Are
         .map { Result.Success(it.map { areaModel -> areaModel.toDomain() }) }
         .catch { Result.Error(it as Exception) }
 
+    fun getById(id: String): Flow<Result<Area>> = areasRemoteDataSource.getById(id)
+        .map { Result.Success(it.toDomain()) }
+        .catch { Result.Error(it as Exception) }
+
     suspend fun add(area: Area): Result<Nothing> {
         val areaModel = area.toModel()
         return areasRemoteDataSource.add(areaModel)

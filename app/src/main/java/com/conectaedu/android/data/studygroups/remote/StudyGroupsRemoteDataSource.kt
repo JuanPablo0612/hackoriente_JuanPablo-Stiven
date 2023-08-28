@@ -4,6 +4,7 @@ import com.conectaedu.android.data.model.Result
 import com.conectaedu.android.data.model.StudyGroupModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.snapshots
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
@@ -14,6 +15,10 @@ class StudyGroupsRemoteDataSource @Inject constructor(private val firestore: Fir
         firestore.collection("areas/$areaId/courses/$courseId/studyGroups")
             .snapshots()
             .map { it.toObjects<StudyGroupModel>() }
+
+    fun getById(areaId: String, courseId: String, studyGroupId: String) =
+        firestore.document("areas/$areaId/courses/$courseId/studyGroups/$studyGroupId").snapshots()
+            .map { it.toObject<StudyGroupModel>()!! }
 
     suspend fun add(
         areaId: String,

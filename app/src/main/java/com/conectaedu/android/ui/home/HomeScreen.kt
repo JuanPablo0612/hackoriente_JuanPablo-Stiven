@@ -1,5 +1,6 @@
 package com.conectaedu.android.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,11 +27,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.conectaedu.android.R
+import com.conectaedu.android.ui.common.AreaCard
+import com.conectaedu.android.ui.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), navController: NavController) {
     val uiState = viewModel.uiState
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
@@ -43,9 +47,9 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text(text = stringResource(id = R.string.home_register_button)) },
+                text = { Text(text = stringResource(id = R.string.common_register_button)) },
                 icon = { Icon(imageVector = Icons.Default.Add, contentDescription = null) },
-                onClick = { }
+                onClick = { navController.navigate(Screen.AreaRegistration.route) }
             )
         },
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
@@ -61,19 +65,23 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            if (uiState.registeredAreas.isNotEmpty()) {
+            if (uiState.allAreas.isNotEmpty()) {
                 LazyColumn(
                     contentPadding = PaddingValues(10.dp),
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding)
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.fillMaxSize()
                 ) {
                     items(
-                        items = uiState.registeredAreas,
+                        items = uiState.allAreas.filter {
+                            uiState.currentUser.registeredAreaIds.contains(it.id)
+                        },
                         key = { it.id },
                         contentType = { "area" }
                     ) { area ->
-                        AreaCard(area = area, onClick = {})
+                        AreaCard(
+                            area = area,
+                            onClick = { navController.navigate("${Screen.Area.route}/${area.id}") }
+                        )
                     }
                 }
             } else {

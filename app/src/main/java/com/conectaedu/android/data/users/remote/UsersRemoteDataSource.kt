@@ -21,4 +21,16 @@ class UsersRemoteDataSource @Inject constructor(private val firestore: FirebaseF
 
     fun get(id: String) =
         firestore.document("users/$id").snapshots().map { it.toObject<UserModel>()!! }
+
+    suspend fun registerArea(userModel: UserModel, areaId: String): Result<Nothing> {
+        return try {
+            val areas = userModel.registeredAreaIds.toMutableList()
+            areas.add(areaId)
+            firestore.document("users/${userModel.id}").update("registeredAreaIds", areas.toList())
+                .await()
+            Result.Success(null)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
 }

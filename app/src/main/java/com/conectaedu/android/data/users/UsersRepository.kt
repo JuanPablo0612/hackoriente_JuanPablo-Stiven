@@ -18,4 +18,9 @@ class UsersRepository @Inject constructor(private val usersRemoteDataSource: Use
     fun get(id: String) = usersRemoteDataSource.get(id)
         .map { userModel -> Result.Success(userModel.toDomain()) }
         .catch { throwable -> Result.Error(throwable as Exception)}
+
+    suspend fun registerArea(user: User, areaId: String): Result<Nothing> {
+        val userModel = user.toModel()
+        return usersRemoteDataSource.registerArea(userModel, areaId)
+    }
 }

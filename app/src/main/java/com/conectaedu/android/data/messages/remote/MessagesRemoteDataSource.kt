@@ -3,6 +3,7 @@ package com.conectaedu.android.data.messages.remote
 import com.conectaedu.android.data.model.MessageModel
 import com.conectaedu.android.data.model.Result
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.snapshots
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.flow.map

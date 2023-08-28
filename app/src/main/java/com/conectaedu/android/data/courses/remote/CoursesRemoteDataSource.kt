@@ -4,6 +4,7 @@ import com.conectaedu.android.data.model.CourseModel
 import com.conectaedu.android.data.model.Result
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.snapshots
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
@@ -12,6 +13,10 @@ import javax.inject.Inject
 class CoursesRemoteDataSource @Inject constructor(private val firestore: FirebaseFirestore) {
     fun getAllByAreaId(areaId: String) = firestore.collection("areas/$areaId/courses").snapshots()
         .map { it.toObjects<CourseModel>() }
+
+    fun getById(areaId: String, courseId: String) =
+        firestore.document("areas/$areaId/courses/$courseId").snapshots()
+            .map { it.toObject<CourseModel>()!! }
 
     suspend fun add(areaId: String, courseModel: CourseModel): Result<Nothing> {
         return try {

@@ -37,5 +37,37 @@
     <string name="home_title">Home</string>
     <string name="home_subtitle">Here are the areas you registered to</string>
     <string name="home_empty_areas">You have not registered in any area</string>
-    <string name="home_register_button">Register</string>
+
+    <!-- Resources for the area registration screen -->
+    <string name="areas_registration_title">Areas registration</string>
+    <string name="areas_registration_subtitle">Here are the areas you haven\'t registered to</string>
+    <string name="areas_registration_area_add_button">Add</string>
+    <string name="areas_registration_area_add_name">Name</string>
+    <string name="areas_registration_area_add_name_error">The area name must not be empty</string>
+    <string name="areas_registration_area_cancel_name">Cancel</string>
+
+    <!-- Resources for the area screen -->
+    <string name="area_subtitle">Here are the area courses</string>
+    <string name="area_course_add_button">Add</string>
+    <string name="area_course_add_name">Name</string>
+    <string name="area_course_add_description">Description</string>
+    <string name="area_course_add_name_error">The course name must not be empty</string>
+    <string name="area_course_add_description_error">The course description must not be empty</string>
+    <string name="area_course_cancel">Cancel</string>
+
+    <!-- Resources for the course screen -->
+    <string name="course_description">Description: %1$s</string>
+    <string name="course_subtitle">Here are the study groups for this course</string>
+    <string name="course_study_group_add_button">Add</string>
+    <string name="course_study_group_add_name">Name</string>
+    <string name="course_study_group_add_description">Description</string>
+    <string name="course_study_group_add_name_error">The study group name must not be empty</string>
+    <string name="course_study_group_add_description_error">The study group description must not be empty</string>
+    <string name="course_study_group_cancel">Cancel</string>
+
+    <!-- Resources for the study groups screen -->
+    <string name="study_group_message">Message</string>
+
+    <!-- Resources for common use -->
+    <string name="common_register_button">Register</string>
 </resources>

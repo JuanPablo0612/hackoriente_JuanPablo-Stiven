@@ -240,7 +240,7 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel(), navController
                     imeAction = ImeAction.Next
                 ),
                 keyboardActions = KeyboardActions(onNext = {
-                    focusManager.moveFocus(FocusDirection.Next)
+                    focusManager.clearFocus()
                 }),
                 modifier = Modifier.fillMaxWidth()
             )

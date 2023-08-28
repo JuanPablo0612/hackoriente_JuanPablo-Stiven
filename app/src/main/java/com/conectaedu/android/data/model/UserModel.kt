@@ -9,7 +9,7 @@ data class UserModel(
     val lastName: String,
     val registeredAreaIds: List<String>,
     val registeredStudyGroupIds: List<String>,
-    val isAdmin: Boolean = false
+    val admin: Boolean
 ) {
     constructor() : this(
         id = "",
@@ -18,7 +18,7 @@ data class UserModel(
         lastName = "",
         registeredAreaIds = emptyList(),
         registeredStudyGroupIds = emptyList(),
-        isAdmin = false
+        admin = false
     )
 }
 
@@ -29,5 +29,5 @@ fun UserModel.toDomain() = User(
     lastName = lastName,
     registeredAreaIds = registeredAreaIds,
     registeredStudyGroupIds = registeredStudyGroupIds,
-    isAdmin = isAdmin
+    admin = admin
 )

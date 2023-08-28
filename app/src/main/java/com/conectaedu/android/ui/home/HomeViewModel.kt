@@ -28,12 +28,12 @@ class HomeViewModel @Inject constructor(
 
     private fun getCurrentUser() {
         viewModelScope.launch {
-            getCurrentUserUseCase().collect { user ->
-                getAllAreasUseCase().collect { areas ->
-                    val registeredAreas =
-                        areas.data().filter { user.data().registeredAreaIds.contains(it.id) }
-
-                    uiState = uiState.copy(currentUser = user.data(), registeredAreas = registeredAreas)
+            getCurrentUserUseCase().collect { userResult ->
+                getAllAreasUseCase().collect { areasResult ->
+                    uiState = uiState.copy(
+                        currentUser = userResult.data(),
+                        allAreas = areasResult.data()
+                    )
                 }
             }
         }
@@ -42,5 +42,5 @@ class HomeViewModel @Inject constructor(
 
 data class HomeUiState(
     val currentUser: User = User(),
-    val registeredAreas: List<Area> = emptyList()
+    val allAreas: List<Area> = emptyList()
 )

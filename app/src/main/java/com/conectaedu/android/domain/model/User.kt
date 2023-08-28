@@ -9,7 +9,7 @@ data class User(
     val lastName: String = "",
     val registeredAreaIds: List<String> = emptyList(),
     val registeredStudyGroupIds: List<String> = emptyList(),
-    val isAdmin: Boolean = false
+    val admin: Boolean = false
 )
 
 fun User.toModel() = UserModel(
@@ -19,5 +19,5 @@ fun User.toModel() = UserModel(
     lastName = lastName,
     registeredAreaIds = registeredAreaIds,
     registeredStudyGroupIds = registeredStudyGroupIds,
-    isAdmin = isAdmin
+    admin = admin
 )
